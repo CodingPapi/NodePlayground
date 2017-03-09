@@ -12,6 +12,7 @@
         "indent": ["error", 4]
     },
     "env": {
+        "browser": true,
         "jest": true,
         "es6": true
     }
