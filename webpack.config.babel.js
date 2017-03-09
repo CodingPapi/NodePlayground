@@ -4,10 +4,12 @@ import path from 'path'
 
 import { WDS_PORT } from './src/shared/config'
 import { isProd } from './src/shared/util'
+import webpack from 'webpack'
 
 export default {
     entry: [
         './src/client',
+        'react-hot-loader/patch',
     ],
     output: {
         filename: 'bundle.js',
@@ -25,6 +27,13 @@ export default {
     },
     devServer: {
         port: WDS_PORT,
+        hot: true,
     },
+    plugins: [
+        new webpack.optimize.OccurrenceOrderPlugin(),
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NamedModulesPlugin(),
+        new webpack.NoEmitOnErrorsPlugin(),
+    ],
 }
 
